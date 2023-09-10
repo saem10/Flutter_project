@@ -1,67 +1,41 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    //  App entry point
+    //  display kore sob function
+
+   /*   MaterialApp(
+        // widget jar mode onek function ace
+        // ja dia app Interior design kora jay
+           home: Scaffold(
+        // Scaffold widget is part of the Flutter framework
+        // and is typically used as the top-level widget in a Flutter app.
+        // AppBar,body,FloatingActionButton
+           body: Center(
+             child:Text('Hello world') ,
+                ),
+               ),
+              ),
+   */
+
+      MyApp()
+
+  ); // RunApp
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+class MyApp extends StatelessWidget{
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter AppBar Example',
+  Widget build(BuildContext context){
+   return MaterialApp(
+     debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 100, // Adjust the height as needed
-          elevation: 10, // Adjust the elevation as needed
-          leading: Icon(Icons.add_business),
-          title: Text(
-            'Home',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20, // Adjust the font size as needed
-              fontWeight: FontWeight.bold, // Optional, adjust as needed
-            ),
-          ),
-          centerTitle: true, // Center the title horizontally
-          actions: [
-            Icon(Icons.search),
-          ],
-          backgroundColor: Colors.green,
+          title: Text('Home'),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('This is mod 5 Assignment'),
-              RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'My ',
-                      style: TextStyle(color: Colors.red),
-                    ),
-                    TextSpan(
-                      text: 'phone ',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                    TextSpan(
-                      text: 'name ',
-                      style: TextStyle(color: Colors.purple),
-                    ),
-                    TextSpan(
-                      text: 'Your phone name',
-                      style: TextStyle(color: Colors.orange),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+          child: Text('Hello screen'),
       ),
-    );
+     ),
+   );
   }
 }
