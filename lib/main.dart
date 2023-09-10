@@ -42,75 +42,61 @@ class HomeScreen extends StatelessWidget{
               },
             ),
           ],
-
-
-
         ),
-        body:Column(
-          children: [
-            Text("Mir Saem Hasan",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold
+
+        
+
+    body: Center(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text('Hello World',
+              style: TextStyle(fontSize: 40),
               ),
-            ),
-            Text("Mir Saem Hasan",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold
+              Text('Hello World',
+              style: TextStyle(fontSize: 40),
               ),
-            ),
-            Icon(Icons.account_circle,size: 100,color: Colors.tealAccent,),
-          ],
+              Icon(Icons.account_circle,size: 70,),
+              Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+              //  crossAxisAlignment: CrossAxisAlignment.center,
+                children:[
+                  Text('Hello World  ',style: TextStyle(fontSize: 30 ) ),
+                  Text('Hello World',style: TextStyle(fontSize: 30 ) ),
+
+               ],
+              ),
+              Image.network('https://e0.pxfuel.com/wallpapers/448/142/desktop-wallpaper-cool-messi-pics-messi-aesthetic.jpg'),
+              Image.asset('images/mountain.jpg'),
+              //  Image.asset('images/mountain.jpg',width: 50,height: 50,
+              //  fit: BoxFit.cover, fit: BoxFit.fill,
+              //  fit: BoxFit.contain, fit: BoxFit.scaleDown),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                        text: 'My',
+                        style: TextStyle(fontSize: 30, color: Colors.red)),
+                    TextSpan(text: ' phone', style: TextStyle(color: Colors.blue)),
+                    TextSpan(
+                        text: ' name',
+                        style: TextStyle(fontSize: 20, color: Colors.purple)),
+                    TextSpan(
+                        text: ' is Iphone 15 pro',
+                        style: TextStyle(fontSize: 30, color: Colors.orangeAccent)),
+                  ],
+                ),
+              ),
+
+
+
+
+
+
+            ],
+          ),
         )
     );
   }
 }
-/*
-
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('My App'),
-          leading: IconButton(
-            icon: Icon(Icons.menu), // Icon on the left
-            onPressed: () {
-              // Handle the left icon's onPressed event here
-            },
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search), // Icon on the right
-              onPressed: () {
-                // Handle the right icon's onPressed event here
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.settings), // Another icon on the right
-              onPressed: () {
-                // Handle the right icon's onPressed event here
-              },
-            ),
-          ],
-        ),
-        body: Center(
-          child: Text('Hello, World!'),
-        ),
-      ),
-    );
-  }
-}
-
-
- */
