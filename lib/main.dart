@@ -16,87 +16,157 @@ class MyApp extends StatelessWidget{
   }
 }
 
-class HomeScreen extends StatelessWidget{
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
-  Widget build(BuildContext context){
-    return Scaffold(
-        backgroundColor: Colors.blueGrey,
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          centerTitle: true,
-          title: Text('Home'),
-          leading: Icon(Icons.add_business,size: 30,color: Colors.black),
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      appBar: AppBar(
+          title: Text('Saem')
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 190,
+              height: 90,
+              //color: Colors.indigo,
+              // decoration er time a color decoration er modde nite hobe
+              margin: EdgeInsets.all(20),
+              //padding: EdgeInsets.all(10),
+              //padding: EdgeInsets.only(top: 15, bottom: 5,),
+              padding: EdgeInsets.symmetric(vertical:10,horizontal: 20 ),
+
+              decoration: BoxDecoration(
+                color: Colors.indigo,
+                border: Border.all(color: Colors.black,width: 1),
+                //borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(15),
+                  bottomLeft: Radius.circular(15),
+                ),
+                //shape: BoxShape.circle
 
 
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search,size: 30,color: Colors.black), // Icon on the right
-              onPressed: () {
-                // Handle the right icon's onPressed event here
-              },
+              ),
+              child: Text("Saem",style: TextStyle(color: Colors.white70,
+                  fontSize: 40),),
+              alignment: Alignment.center,
+
             ),
-            IconButton(
-              icon: Icon(Icons.settings,size: 30,color: Colors.black), // Another icon on the right
-              onPressed: () {
-                // Handle the right icon's onPressed event here
-              },
+            Container(
+              child: ElevatedButton(
+                //onHover: , use foe website
+                //when cursor touch the baton change the color
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      textStyle: TextStyle(fontSize: 30,
+                          fontWeight:FontWeight.w500  ),
+                      padding: EdgeInsets.all(15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      )
+                  ),
+                  onLongPress: (){
+                    print('Email delete');
+                  },
+                  onPressed: (){
+                    print('Email has been send');
+                    print('Resend email');
+                  }, child: Text('Send Email')
+              ),
             ),
+            TextButton(
+                style: TextButton.styleFrom(
+                    foregroundColor: Colors.red,
+                    textStyle: TextStyle(fontSize: 25)
+
+                ),
+                onLongPress: (){
+                  print('Long press');
+                },
+                onPressed: () {
+                  print('Resend email');
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Resend'),
+                    ),
+                  ),
+                )),
+
+
+            IconButton(onPressed: (){}, icon: Icon (Icons.add)),
+            OutlinedButton(
+                onLongPress: (){
+                  print('Long press on outline button');
+                },
+                onPressed: (){}, child:Text('Outline button') ),
+            TextField(
+              style: TextStyle(
+                color: Colors.deepOrangeAccent,
+              ),
+              decoration: InputDecoration(
+                  fillColor: Colors.green[400],
+                  filled: true,
+                  hintText: 'Enter your Email address',
+                  hintStyle: TextStyle(
+                      color: Colors.white70
+                  ),
+                  suffixIcon: Icon(Icons.email_outlined,
+                    color: Colors.white70,
+                  ),
+                  label: Text('User Name'),
+                  labelStyle: TextStyle(
+                      color: Colors.white70
+                  )
+
+              ),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            TextField(
+              obscureText: true,
+              controller: TextEditingController(),
+              style: TextStyle(
+                color: Colors.deepOrangeAccent,
+              ),
+              decoration: InputDecoration(
+                fillColor: Colors.green[400],
+                filled: true,
+                hintText: 'Enter your Password',
+                hintStyle: TextStyle(
+                    color: Colors.white70
+                ),
+                suffixIcon: Icon(Icons.password,
+                  color: Colors.white70,
+                ),
+                label: Text('Password'),
+                labelStyle: TextStyle(
+                    color: Colors.white70
+                ),
+                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red)
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.deepOrange)
+                ),
+
+              ),
+            ),
+
+
+
           ],
         ),
-
-        
-
-    body: Center(
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text('Hello World',
-              style: TextStyle(fontSize: 40),
-              ),
-              Text('Hello World',
-              style: TextStyle(fontSize: 40),
-              ),
-              Icon(Icons.account_circle,size: 70,),
-              Row(
-               mainAxisAlignment: MainAxisAlignment.center,
-              //  crossAxisAlignment: CrossAxisAlignment.center,
-                children:[
-                  Text('Hello World  ',style: TextStyle(fontSize: 30 ) ),
-                  Text('Hello World',style: TextStyle(fontSize: 30 ) ),
-
-               ],
-              ),
-              Image.network('https://e0.pxfuel.com/wallpapers/448/142/desktop-wallpaper-cool-messi-pics-messi-aesthetic.jpg'),
-              Image.asset('images/mountain.jpg'),
-              //  Image.asset('images/mountain.jpg',width: 50,height: 50,
-              //  fit: BoxFit.cover, fit: BoxFit.fill,
-              //  fit: BoxFit.contain, fit: BoxFit.scaleDown),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                        text: 'My',
-                        style: TextStyle(fontSize: 30, color: Colors.red)),
-                    TextSpan(text: ' phone', style: TextStyle(color: Colors.blue)),
-                    TextSpan(
-                        text: ' name',
-                        style: TextStyle(fontSize: 20, color: Colors.purple)),
-                    TextSpan(
-                        text: ' is Iphone 15 pro',
-                        style: TextStyle(fontSize: 30, color: Colors.orangeAccent)),
-                  ],
-                ),
-              ),
-
-
-
-
-
-
-            ],
-          ),
-        )
+      ),
     );
   }
 }
