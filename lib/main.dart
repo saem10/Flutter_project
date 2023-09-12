@@ -19,45 +19,112 @@ class HomeScreen extends StatelessWidget{
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Home'),
+
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            //Image.asset('images/mountain.jpg'),
-            GestureDetector(
-              //gesture use fore text button
-              onTap: (){
-                print('Hello world');
+      body:
+       Scrollbar(
+         thickness: 10,
+         radius: Radius.circular(8),
+         //child: SingleChildScrollView(
 
-              },
-              onLongPress: (){},
-              onDoubleTap: (){},
-              child: Text('Hello',
-              style: TextStyle(fontSize: 50),
+           child: ListView(
+             //ListView
+            //scrollDirection: Axis.vertical,
+            children: [
+              Divider(
+                height: 40,
               ),
-            ),
-            InkWell(
-              //gesture use fore text button
-              onTap: (){
-                print('Hello world');
+              ListTile(
+                title: Text('User name'),
+                subtitle: Text('user@email.com'),
+                leading: Icon(Icons.add_business),
+                trailing: Column(
+                  children: [
+                    Icon(Icons.add),
+                    Icon(Icons.add),
+                  ],
+                ),
 
-              },
-              borderRadius: BorderRadius.circular(10),
-              onLongPress: (){},
-              onDoubleTap: (){},
-              child: Text('Hello',
-                style: TextStyle(fontSize: 50),
+                onTap: (){
+                  print('tap');
+                },
               ),
-            )
+               Divider(
+                 height: 8,
+                 thickness: 1,
+                 color: Colors.green,
+                 endIndent: 15,
+                 indent: 15,
+               ),
+              ListTile(
+                title: Text('User name'),
+                subtitle: Text('user@email.com'),
+                leading: Icon(Icons.add_business),
+                trailing: Icon(Icons.add),
+                onTap: (){
+                  print('tap');
+                },
+              ),
 
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
+              Text('data',style: TextStyle(fontSize:20),),
 
-          ],
-        ),
+            ],
+
       ),
-
-
+        // ),
+       ),
     );
   }
 }
