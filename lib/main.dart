@@ -12,7 +12,24 @@ class MyApp extends StatelessWidget{
     );
   }
 }
-class HomeScreen extends StatelessWidget{
+class HomeScreen extends StatefulWidget{
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<String> students = [
+    'Saem',
+    'Hasan',
+    'Arup',
+    'Kazi',
+    'Faruk',
+    'Saem',
+    'Hasan',
+    'Arup',
+    'Kazi',
+    'Faruk',
+  ];
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -25,30 +42,22 @@ class HomeScreen extends StatelessWidget{
         Scrollbar(
           thickness: 10,
           radius: Radius.circular(8),
-          child:
-          /*ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text('item number $index'),
-              );
-             }),*/
-          ListView.separated(
-            itemCount: 20,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text('item number $index'),
-              );
-            },
+          child:ListView.separated(
+            itemCount: students.length,
+            itemBuilder: (context,index){
+            return ListTile(
+              onTap: (){
+                print('go to details screen');
+              },
+              title:Text(students[index]),
+            );
+           },
             separatorBuilder: (context,index){
-              return Column(
-                children: [
-                  Text(index.toString()),
-                  Divider(),
-                ],
-              );
+              return Divider();
             },
           ),
+
+
         )
     );
   }
