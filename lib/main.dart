@@ -1,61 +1,133 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Myapp());
 }
 
-class MyApp extends StatelessWidget {
+class Myapp extends StatelessWidget {
+  const Myapp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("My Shopping List"),
-          centerTitle: true, // Center the title in the app bar
-          actions: [
-            IconButton(
-              icon: Icon(Icons.shopping_cart),
-              onPressed: () {
-                // Add cart functionality here
+    return const MaterialApp(
+      home: HomeScreen(),
+
+    );
+  }
+}
+
+///Route
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          Text('Home', style: TextStyle(fontSize: 40),
+          ),
+            ElevatedButton(onPressed: (){
+              // Navigation - Route home -> Route setting
+              // Navigator
+              // Navigator.typeofNavigation(current location, Destination);
+              //Navigation - Push, Pop(Back),Replace,replaceAll,RemoveUntill
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingScreen(),
+                  ),
+                );
               },
+              child: Text('Go to setting'),
             ),
           ],
         ),
-        body: ShoppingList(),
       ),
     );
   }
 }
 
-class ShoppingList extends StatelessWidget {
-  final List<Map<String, String>> items = [
-    {"name": "Apples", "icon": "🍎"},
-    {"name": "Bananas", "icon": "🍌"},
-    {"name": "Milk", "icon": "🥛"},
-    {"name": "Bread", "icon": "🍞"},
-    {"name": "Eggs", "icon": "🥚"},
-  ];
 
+/// Route
+class SettingScreen extends StatelessWidget {
+  const SettingScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (BuildContext context, int index) {
-        final item = items[index];
-        return ListTile(
-          leading: Text(item['icon'] ?? '', style: TextStyle(fontSize: 24.0)),
-          title: Text(item['name'] ?? ''),
-          onTap: () {
-            // Add functionality when an item is tapped.
-            // For example, you can show a snackbar message.
-           /* ScaffoldMessenger.of(context).showSnackBar(
-               SnackBar(
-                content: Text("You tapped ${item['name']}"),
-              ),
-            );*/
-          },
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Setting Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:  [
+            Text('Setting', style: TextStyle(fontSize: 30),),
+            ElevatedButton(onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Display(),
+                  ),
+                );
+              },
+              child: Text('Display setting'),
+            ),
+            TextButton(onPressed: (){
+              Navigator.pop(context);
+            }, child: Text('Home')),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+//Route
+class Display extends StatelessWidget {
+  const Display({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Display Setting'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Display', style: TextStyle(fontSize: 30),),
+            TextButton(onPressed: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingScreen(),
+                  ));
+            },
+                child: Text('Go to setting')),
+            ElevatedButton(onPressed: (){
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ));
+            },
+                child: Text('Home')),
+            TextButton(
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      (route) => false);
+                },
+                child: Text('main Home')),
+          ],
+        ),
+      ),
     );
   }
 }
