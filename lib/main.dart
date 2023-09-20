@@ -9,13 +9,51 @@ class Myapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: HomeScreen(),
+      theme: ThemeData(
+        primaryColor: Colors.green,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+              foregroundColor: Colors.white,
+            padding: EdgeInsets.symmetric(horizontal: 100,vertical: 5),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),),
+            elevation: 20,
+            textStyle: TextStyle(
+              fontSize: 16,
+              letterSpacing: 0.5,
+              wordSpacing: 1.5,
+            )
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            textStyle: TextStyle(fontSize: 16,
+            ),
+            foregroundColor:Colors.deepOrange
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+            backgroundColor: Colors.teal,
+            elevation: 100,
+            shadowColor: Colors.deepOrange),
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(fontSize: 18),
+          bodyLarge: TextStyle(fontSize: 30),
+        ),
+
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      themeMode:ThemeMode.light,
+
     );
   }
 }
 
-///Route
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -29,81 +67,11 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Home',
-              style: TextStyle(fontSize: 40),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ProductListTitle()));
-              },
-              child: Text('Go to product list'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-//Route
-class ProductListTitle extends StatelessWidget {
-  const ProductListTitle({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Product list'),
-      ),
-      body: ListView.builder(
-        itemCount: 50,
-        itemBuilder: (context, index) {
-          return ListTile(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      ProductDetailsScreen(productName: index.toString(),),
-                ),
-              ).then((value) {
-                print(value);
-              });
-            },
-            title: Text(index.toString()),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class ProductDetailsScreen extends StatelessWidget {
-  final String productName;/// Mandatory
-  final double? price;/// Optional
-
-  const ProductDetailsScreen(
-      {super.key, required this.productName, this.price});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Product Details'),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              productName,
-              style: TextStyle(fontSize: 30),
-            ),
-            ElevatedButton(onPressed: (){
-              Navigator.pop(context, 'My name $productName');
-            }, child: Text('Back'),)
+            Text('Hello World'),
+            Text('Hello World',style: Theme.of(context).textTheme.bodyLarge,),
+            TextButton(onPressed: (){}, child:Text('Tap here'),),
+            ElevatedButton(onPressed: (){}, child: Text('tap here'),),
+            ElevatedButton(onPressed: (){}, child: Text('tap here'),),
           ],
         ),
       ),
