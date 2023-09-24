@@ -5,8 +5,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,101 +13,86 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/*class Home extends StatelessWidget {
-  Home({super.key});
-  int counter = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: Text(
-        counter.toString(),
-          style: Theme.of(context).textTheme.displayLarge,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          counter = counter + 1 ;
-          print(counter);
-        },
-        child: Icon(Icons.add),
-      ),
-    );
-  }
-}*/
 class CounterScreen extends StatefulWidget {
-  const CounterScreen({super.key});
-
   @override
-  State<CounterScreen> createState() => _CounterState();
+  _CounterScreenState createState() => _CounterScreenState();
 }
 
-class _CounterState extends State<CounterScreen> {
-  int counter = 0;
+class _CounterScreenState extends State<CounterScreen> {
+  int count = 0;
+
+  void incrementCount() {
+    setState(() {
+      count++;
+      if (count >= 5) {
+        _showDialog();
+      }
+    });
+  }
+
+  void decrementCount() {
+    setState(() {
+      if (count > 0) {
+        count--;
+      }
+    });
+  }
+
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Button pressed $count times"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Close"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text("Counter App"),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             Text(
-              counter.toString(),
-              style: Theme.of(context).textTheme.displayLarge,
+              'Count:',
+              style: TextStyle(fontSize: 24),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProfileScreen(userName: "Tultul"),
-                    ),
-                  );
-                },
-                child: Text("Profile"))
+            Text(
+              '$count',
+              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: incrementCount,
+                  child: Text("+",style: TextStyle(fontSize: 24)),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: decrementCount,
+                  child: Text("-",style: TextStyle(fontSize: 30),),
+                ),
+              ],
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          counter = counter + 1 ;
-          print(counter);
-          setState(() {});
-        },
-        child: Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-// Widger class
-class ProfileScreen extends StatefulWidget {
-  final String userName;
-  const ProfileScreen({super.key, required this.userName});
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-// state class
-// state class -> widget class
-class _ProfileScreenState extends State<ProfileScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
-      ),
-      body:Center(
-        child: Text(widget.userName ),
-      )
-
-
     );
   }
 }
