@@ -1,77 +1,55 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Myapp());
+  runApp(MyApp());
 }
 
-class Myapp extends StatelessWidget {
-  const Myapp({super.key});
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeScreen(),
-      theme: ThemeData(
-        primaryColor: Colors.green,
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green,
-              foregroundColor: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 100,vertical: 5),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),),
-            elevation: 20,
-            textStyle: TextStyle(
-              fontSize: 16,
-              letterSpacing: 0.5,
-              wordSpacing: 1.5,
-            )
-          ),
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            textStyle: TextStyle(fontSize: 16,
-            ),
-            foregroundColor:Colors.deepOrange
-          ),
-        ),
-        appBarTheme: AppBarTheme(
-            backgroundColor: Colors.teal,
-            elevation: 100,
-            shadowColor: Colors.deepOrange),
-        textTheme: TextTheme(
-          bodyMedium: TextStyle(fontSize: 18),
-          bodyLarge: TextStyle(fontSize: 30),
-        ),
-
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
-      themeMode:ThemeMode.light,
-
+    return CupertinoApp(
+      home: Home(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class Home extends StatelessWidget {
+  Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        leading: Icon(CupertinoIcons.home),
+        middle: Text('Home'),
+        trailing: CupertinoSwitch(
+          onChanged: (onChange) {},
+          value: true,
+        ),
+        backgroundColor: Colors.green,
       ),
-      body: Center(
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Hello World'),
-            Text('Hello World',style: Theme.of(context).textTheme.bodyLarge,),
-            TextButton(onPressed: (){}, child:Text('Tap here'),),
-            ElevatedButton(onPressed: (){}, child: Text('tap here'),),
-            ElevatedButton(onPressed: (){}, child: Text('tap here'),),
+            Text('Saem Hasan'),
+            Text('Saem Hasan'),
+            Text('Saem Hasan'),
+            Text('Saem Hasan'),
+            Text('Saem Hasan'),
+            Text('Saem Hasan'),
+            CupertinoButton(child: Text('Saem'), onPressed: (){} ),
+            CupertinoButton.filled(child: Text('Saem'), onPressed: (){} ),
+            CupertinoTextField(),
+            CupertinoTabBar(items: [
+              BottomNavigationBarItem(label:'Mir' ,icon: Icon(CupertinoIcons.home)),
+              BottomNavigationBarItem(label: 'Saem',icon: Icon(CupertinoIcons.home)),
+              BottomNavigationBarItem(label: 'Hasan',icon: Icon(CupertinoIcons.home)),
+            ])
+            
           ],
         ),
       ),
