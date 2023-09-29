@@ -7,57 +7,49 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Size size = MediaQuery.of(context).size;
-    // Size size = MediaQuery.sizeOf(context);
-    // print(size);
-    // print(size.width);
-    // print(size.height);
-    // print(size.aspectRatio);
-    // print(size.flipped);
-    // Orientation orientation = MediaQuery.orientationOf(context);
-    // print(orientation);
-    // List<DisplayFeature> displayFeatures = MediaQuery.displayFeaturesOf(context);
-    // print(displayFeatures);
-    // print(MediaQuery.devicePixelRatioOf(context));
-    // print(MediaQuery.platformBrightnessOf(context));
     return Scaffold(
       appBar: AppBar(
-        title: Text('Intro to RD'),
+        title: Text('Home'),
       ),
-      body: LayoutBuilder(
-          builder: (context, constraints) {
-            print(constraints.maxWidth);
-            if (constraints.maxWidth > 500) {
-              return Center(child: Text('Too big screen'));
-            } else {
-              return Center(
-                child: OrientationBuilder(
-                    builder: (context, orientation) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(orientation == Orientation.portrait ? 'Portrait': 'Landscape'),
-                          Wrap(
-                            alignment: WrapAlignment.center,
-                            crossAxisAlignment: WrapCrossAlignment.start,
-                            children: [
-                              Text('skdjfksjfkljasdkljf dsfk jksdjf kjsdkf jkfk ksdlfj klas'),
-                              Text('skdjfksjfklj'),
-                              Text('skdjfksjfkljasdkljf dsfk jksdjf kjsdkf jkfk ksdlfj klas'),
-                              Text('skdjfksjfkljasdkljf dsfk jksdjf kjsdkf jkfk ksdlfj klas'),
-                              Text('skdjfksjfkljasdkljf dsfk jksdjf kjsdkf jkfk ksdlfj klas'),
-                              Text('skdjfksjfkljasd'),
-                              Text('skdjfksjfkljasdkljf dsfk jksdjf kjsdkf jkfk ksdlfj klas'),
-                            ],
-                          )
-                        ],
-                      );
-                    }
-                ),
-              );
-            }
-          }
-      ),
+     body: Column(
+       children: [
+         /// Ratio = width : height
+         /*AspectRatio(
+           aspectRatio: 16/9,
+           child: Container(
+             color: Colors.redAccent,
+             child: Image.asset('images/mountain.jpg',
+               fit:BoxFit.cover,),
+
+           ),
+         ),*/
+         Container(
+           width: 100,
+           height: 100,
+           color:Color(0xFF045044),
+           child: FractionallySizedBox(
+             widthFactor: 0.5,
+             heightFactor: 0.5,
+             child: Container(
+               decoration: BoxDecoration(
+                 color: Colors.red,
+                 borderRadius: BorderRadius.circular(25)
+
+               ),
+               //color: Colors.red,
+             ),
+           ),
+         ),
+
+         /*SizedBox(
+           width: MediaQuery.of(context).size.width/10,
+           height: MediaQuery.of(context).size.height/10,
+           child: Container(
+             color: Colors.red,
+           ),
+         )*/
+       ],
+     ),
     );
   }
 }
