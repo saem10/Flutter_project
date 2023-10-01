@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// MediaQuery
+/// Stack, Positioned, Align
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,109 +11,43 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home'),
       ),
-     body: Column(
-       children: [
-         /// Ratio = width : height
-         /*AspectRatio(
-           aspectRatio: 16/9,
-           child: Container(
-             color: Colors.redAccent,
-             child: Image.asset('images/mountain.jpg',
-               fit:BoxFit.cover,),
+      body: Center(
+        child: Stack(
+          children: [
+            Container(
+              width: 200,
+              height: 200,
+              color: Colors.deepOrange,
+            ),
+            Container(
+              width: 50,
+              height: 50,
+              color: Colors.tealAccent,
+            ),
+            Container(
+              width: 30,
+              height: 30,
+              color: Colors.blue,
+            ),
+            Positioned(
+              bottom:10,right:15,
+              child: Container(
+                width:40,height:40,color:Colors.brown,
+              ),
+            ),
+            Positioned.fill(
 
-           ),
-         ),*/
-         /*Container(
-           width: MediaQuery.sizeOf(context).width,
-           height: MediaQuery.sizeOf(context).width,
-           color:Color(0xFF045044),
-           child: FractionallySizedBox(
-             widthFactor: 0.5,
-             heightFactor: 0.5,
-             child:Container(
-               color: Colors.red,
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Container(
+                  height:40,width:40,color:Colors.teal,
+                ),
+              ),
+            )
 
-               ),
-               //color: Colors.red,
-             ),
-           ),*/
-
-
-         /*SizedBox(
-           width: MediaQuery.of(context).size.width/10,
-           height: MediaQuery.of(context).size.height/10,
-           child: Container(
-             color: Colors.red,
-           ),
-         )*/
-
-         Flexible(
-           fit: FlexFit.loose,
-           flex: 2,
-           child: Container(
-             color: Colors.green,
-             width: MediaQuery.sizeOf(context).width,
-           ),
-         ),
-         Flexible(
-           fit: FlexFit.tight,
-           flex: 3,
-           child: Container(
-             color: Colors.redAccent,
-             width: MediaQuery.sizeOf(context).width,
-           ),
-         ),
-         Flexible(
-           child: Row(
-             children: [
-               Flexible(
-                 fit: FlexFit.tight,
-                 flex: 2,
-                 child: Container(
-                   color: Colors.indigo,
-                   width: MediaQuery.sizeOf(context).width,
-                 ),
-               ),
-               Flexible(
-                 fit: FlexFit.tight,
-                 flex: 2,
-                 child: Container(
-                   color: Colors.blueAccent,
-                   width: MediaQuery.sizeOf(context).width,
-                 ),
-               ),
-             ],
-           ),
-         ),
-         Flexible(
-           fit: FlexFit.tight,
-           flex: 5,
-           child: Container(
-             color: Colors.teal,
-             width: MediaQuery.sizeOf(context).width,
-           ),
-         ),
-         Expanded(
-           flex: 2,
-           child: Container(
-             color: Colors.deepOrange,
-             width: MediaQuery.sizeOf(context).width,
-           ),
-         ),
-         Expanded(
-           flex: 2,
-           child: SizedBox(
-             width: 100,
-             height: 50,
-             child: FittedBox(
-               child: Text('Hello my name is Saem'),
-             ),
-           ),
-         ),
-
-
-       ],
-     ),
+          ],
+        ),
+      ),
     );
   }
 }
