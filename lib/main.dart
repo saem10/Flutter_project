@@ -1,72 +1,181 @@
-
 import 'package:flutter/material.dart';
 
 void main() {
-  // give me some widget
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-// Hot reload => ctl + s
-// Hot restart => ctl + shift + \
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
-class MyApp extends StatelessWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: true,
-      home: HomeScreen(),
-      title: 'Ostad app',
-    );
+
+        return const MaterialApp(
+          title: 'Flutter Demo',
+          home: HomePage(),
+        );
+
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var myItems = [
+    {
+      "img": "images/mountain.jpg",
+    },
+    {
+      "img": "images/mountain.jpg",
+    },
+    {
+      "img": "images/mountain.jpg",
+    },
+    {
+      "img": "images/mountain.jpg",
+    },
+    {
+      "img": "images/mountain.jpg",
+    },
+    {
+      "img": "images/mountain.jpg",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.green,
-        centerTitle: true,
-        title: Text('Home'),
-        leading: Icon(
-          Icons.add_business,
-          color: Colors.white,
-          size: 32,
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search, color: Colors.white, size: 32),
-            onPressed: () {},
-          )
-        ],
+        title: const Text("Profile"),
       ),
-      body: Column(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          final isLandscape = orientation == Orientation.landscape;
+          final crossAxisCount = isLandscape ? 3 : 3;
+
+          return isLandscape
+              ? Row(
             children: [
-              Text('This is mod 5 Assignment',
-                  style: TextStyle(fontSize: 25, color: Colors.black)),
+              Expanded(
+                flex: 1,
+                child: ClipOval(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.width,
+                    child: Image.asset('images/mountain.jpg',
+                        fit: BoxFit.cover),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Text(
+                        "John Doe",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
+                      child: Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo tincidunt augue Contrary to popular belief, simply random text.'),
+                    ),
+                    Expanded(
+                      child: GridView.builder(
+                        gridDelegate:
+                        SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: crossAxisCount,
+                          crossAxisSpacing: 0.8,
+                          childAspectRatio: isLandscape ? 1.1 : .8,
+                        ),
+                        itemCount: myItems.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            child: Container(
+                              margin: const EdgeInsets.all(5),
+                              width: double.infinity,
+                              height: isLandscape ? 100 : 150,
+                              child: Image.asset(
+                                myItems[index]['img']!,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
-          ),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                    text: 'My',
-                    style: TextStyle(fontSize: 30, color: Colors.red)),
-                TextSpan(text: ' phone', style: TextStyle(color: Colors.blue)),
-                TextSpan(
-                    text: ' name',
-                    style: TextStyle(fontSize: 20, color: Colors.purple)),
-                TextSpan(
-                    text: ' is Iphone 12',
-                    style: TextStyle(fontSize: 30, color: Colors.orangeAccent)),
-              ],
-            ),
-          ),
-        ],
+          )
+              : Column(
+            children: [
+              ClipOval(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.width,
+                  child:
+                  Image.asset('images/mountain.jpg', fit: BoxFit.cover),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  "John Doe",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
+                child: Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo tincidunt augue Contrary to popular belief, simply random text.'),
+              ),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    crossAxisSpacing: 0.8,
+                    childAspectRatio: isLandscape ? 0.9 : 1.1,
+                  ),
+                  itemCount: myItems.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      child: Container(
+                        margin: const EdgeInsets.all(5),
+                        width: double.infinity,
+                        height: isLandscape ? 100 : 150,
+                        child: Image.asset(
+                          myItems[index]['img']!,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
