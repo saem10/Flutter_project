@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sizer/sizer.dart';
 
 /// Stack, Positioned, Align
 
@@ -11,37 +13,15 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Home'),
       ),
-      body: Center(
-        child: Stack(
-          children: [
-            Container(
-              width: 200,
-              height: 200,
-              color: Colors.deepOrange,
+      body: ResponsiveBuilder(
+        builder: (context, sizeInformation){
+          return Center(
+            child: Text(
+              sizeInformation.deviceScreenType.toString(),
+              style: TextStyle(fontSize: 15.sp),
             ),
-            Container(
-              width: 50,
-              height: 50,
-              color: Colors.tealAccent,
-            ),
-            Container(width: 30, height: 30, color: Colors.blue),
-            Positioned(
-              bottom: 10,
-              right: 15,
-              child: Container(
-                width: 40,
-                height: 40,
-                color: Colors.brown,
-              ),
-            ),
-            Positioned.fill(
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Container(height: 40, width: 40, color: Colors.teal),
-              ),
-            )
-          ],
-        ),
+          );
+        },
       ),
     );
   }
