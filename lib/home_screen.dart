@@ -1,28 +1,87 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:sizer/sizer.dart';
 
-/// Stack, Positioned, Align
+/// Constructor
+/// CreateState
+/// InitState
 
-class HomeScreen extends StatelessWidget {
+/// DidChangeDependencies
+/// build
+/// didUpdateWidget
+
+/// deactive
+/// dispose
+
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
+  int count = 0;
+
+  /// 1
+ @override
+  void initState() {
+    // TODO: implement initState
+   print('init state');
+    super.initState();
+  }
+
+  /// 2
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    print('Did change dependence');
+    super.didChangeDependencies();
+  }
+
+  /// 3
+  @override
+  void didUpdateWidget(covariant HomeScreen oldWidget) {
+    // TODO: implement didUpdateWidget
+    print('Update');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  /// 5
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    print('deactived');
+    super.deactivate();
+  }
+
+  /// 6
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    print('dispose');
+    super.dispose();
+  }
+
+
+  /// main (4)
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
         title: Text('Home'),
       ),
-      body: ResponsiveBuilder(
-        builder: (context, sizeInformation){
-          return Center(
-            child: Text(
-              sizeInformation.deviceScreenType.toString(),
-              style: TextStyle(fontSize: 15.sp),
-            ),
-          );
-        },
+      body: Center(
+        child:
+          Text('$count',style:TextStyle(fontSize: 40),),
+
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          count++;
+          setState(() {});
+        },
+        child: Icon(Icons.add),
+      ),
+
     );
   }
 }
